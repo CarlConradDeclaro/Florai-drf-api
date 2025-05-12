@@ -37,3 +37,5 @@ def semantic_search_view(request):
     return Response(serializer.data)
  
  
+
+

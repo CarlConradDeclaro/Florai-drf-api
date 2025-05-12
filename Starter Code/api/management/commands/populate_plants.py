@@ -1,8 +1,7 @@
 # management/commands/import_plants.py
 from django.core.management.base import BaseCommand
-from api.models import Plant  # your model
-from api.common.utils import fetch_convex_data
-
+from api.models import Plant
+from api.common.utils.convex import fetch_convex_data
 class Command(BaseCommand):
     help = "Import plant data from Convex API"
 

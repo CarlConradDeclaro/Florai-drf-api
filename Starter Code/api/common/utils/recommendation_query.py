@@ -7,7 +7,7 @@ def is_recommendation_query(question:str) -> bool:
         "what kind of plant", "what would grow", "any plant that", "plants suitable for",
         "suitable for", "appropriate for", "good choice for", "i need a plant",
         "what should i plant", "great for", "works well in", "perfect for", "plant for",
-        "fit for", "plants compatible with", "plant options for", "choices for"
+        "fit for", "plants compatible with", "plant options for", "choices for","provide"
     ]
     question = question.lower()
 
