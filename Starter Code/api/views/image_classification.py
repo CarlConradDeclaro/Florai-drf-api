@@ -11,8 +11,7 @@ from rest_framework import status
 from keras.models import load_model
 from api.common.services.ollama.deepseek import image_classification_response
 
-
-# Load the model once globally
+ 
 model_path = os.path.join(settings.BASE_DIR, 'Flower_Recog_Model.h5')
 model = load_model(model_path)
 
@@ -21,24 +20,22 @@ class ImageClassificationView(APIView):
     parser_classes = (MultiPartParser, FormParser)
 
     def post(self, request):
-        # Get uploaded image
+     
         file = request.FILES.get('image')
         if not file:
             return Response({'error': 'No file provided'}, status=status.HTTP_400_BAD_REQUEST)
 
-        # Save the file temporarily
         fs = FileSystemStorage(location='upload/')
         filename = fs.save(file.name, file)
-        file_path = fs.path(filename)  # Use path instead of url
+        file_path = fs.path(filename) 
 
-        # Classify the saved image
+     
         outcome = self.classify_image(file_path)
         print("result is:", outcome)
-        # Optionally: clean up uploaded file after processing
+    
         if os.path.exists(file_path):
             os.remove(file_path)
 
-        # Return the classification result
         return Response({'flower_name': outcome['flower_name'] , 'confidence':outcome['confidence']}, status=status.HTTP_200_OK)
 
     def classify_image(self, file_path):

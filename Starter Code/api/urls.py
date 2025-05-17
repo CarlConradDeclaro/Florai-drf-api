@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import MyTokenObtainPairView,RegisterView,ProfileView, getRoutes,mistral,phi,deepseek,deepseek2,plant_info,semantic_search_view,deepseek2_json
+from .views import MyTokenObtainPairView,RegisterView,ProfileView, getRoutes,chatbot_flor2,plant_info,semantic_search_view,chatbot_flor
 from rest_framework_simplejwt.views import (TokenRefreshView,)
 from .views.image_classification import ImageClassificationView,predicted_image
 from .views.plant_disease import ImageDiseaseView
@@ -15,16 +15,11 @@ urlpatterns = [
     path('register/', RegisterView.as_view(), name='auth_register'),
     path('profile/',ProfileView.as_view(),name="profile_view"),
  
-    path('ai-mistral/',mistral,name='mistral'),
-    path('ai-phi/',phi,name='phi'),
-    path('ai-deepseek/',deepseek,name='deepseek'),
-    path('ai-deepseek2/',deepseek2,name='deepseek2'),
-    path('ai-deepseek2_json/',deepseek2_json,name='deepseek2'),
+    path('ai-deepseek2/',chatbot_flor2,name='deepseek2'),
+    path('ai-deepseek2_json/',chatbot_flor,name='deepseek2'),
 
     path('classify/', ImageClassificationView.as_view(), name='classify-image'),
-
     path('predicted_image_details/', predicted_image, name='predicted_image'),
-
-   path('plant_disease/', ImageDiseaseView.as_view(), name='plant_disease'),
+    path('plant_disease/', ImageDiseaseView.as_view(), name='plant_disease'),
 
 ]

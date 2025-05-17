@@ -1,6 +1,5 @@
 
 def predicted_image_response_details(prompt):
-
     return f"""
         You are a professional plant expert AI, A user asked "{prompt}"
         
@@ -18,7 +17,6 @@ def predicted_image_response_details(prompt):
 
 
 def recommendation_prompt(prompt,top_plants,conversations):
-
     context = "\n".join([f"{p['common_name']}: {p['description']}: {p['url']}" for p in top_plants])
     conversation_history = "\n".join(
         [
@@ -67,10 +65,7 @@ def recommendation_prompt(prompt,top_plants,conversations):
 
 
 def recommendation_prompt_for_json(prompt, top_plants,conversations):
-    plant_lines = "\n".join([f"{i+1}. **{p['common_name']}** – {p['description']}" for i, p in enumerate(top_plants)])
     context = "\n".join([f"{p['common_name']}: {p['description']}: {p['url']}" for p in top_plants])
-    conversation_history = "\n".join([f"{'User' if 'user' in msg else 'AI'}: {msg.get('user', msg.get('ai'))}" for msg in conversations])
-    
     return f"""
     Previous Conversation:
     {conversations}

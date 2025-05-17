@@ -20,7 +20,6 @@ class RegisterView(generics.CreateAPIView):
     serializer_class = RegisterSerializer
 
 
-
 class ProfileView(APIView):
     permission_classes =  [IsAuthenticated]
 

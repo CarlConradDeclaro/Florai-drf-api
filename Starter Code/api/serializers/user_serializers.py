@@ -12,14 +12,10 @@ from rest_framework.exceptions import AuthenticationFailed
 
 
 
-
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'username', 'email')
-
-
-
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):

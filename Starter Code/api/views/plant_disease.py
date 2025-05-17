@@ -7,8 +7,6 @@ from torchvision import models
 import albumentations as A
 from albumentations.pytorch import ToTensorV2
  
- 
-
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from rest_framework.decorators import api_view
@@ -19,15 +17,9 @@ from rest_framework import status
 from keras.models import load_model
 from api.common.services.ollama.deepseek import image_classification_response
 
-
  
- 
-
-
-# 🧠 Set class names from your training
 class_names = ['Healthy', 'Powdery Mildew', 'Rust']
-
-# ✅ Load model globally
+ 
 def load_model():
     model_path = os.path.join(settings.BASE_DIR, 'plant_disease_model.pt')
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -41,7 +33,7 @@ def load_model():
 model, device = load_model()
 
 
-# ✅ Prediction Function
+ 
 def predict_image(image_path):
     transform = A.Compose([
         A.Resize(128, 128),
@@ -59,7 +51,7 @@ def predict_image(image_path):
     return pred_class, confidence
 
 
-# ✅ API View
+ 
 class ImageDiseaseView(APIView):
     parser_classes = (MultiPartParser, FormParser)
 
